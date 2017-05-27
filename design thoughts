@@ -1,0 +1,10 @@
+use hashmaps for storage
+
+intitialize hashmap according to amount of information to store, ie. for given_Name retrieve values a, b, c, d
+then have hashmap initialize according to how many separate pieces of information there are.
+
+try counting commas + 1 ????
+
+separate information with commas when adding data
+
+
