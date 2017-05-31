@@ -6,6 +6,7 @@
 package writingtoafile;
 import java.nio.file.*;
 import java.io.IOException;
+import java.util.Scanner;
 
 /**
  *
@@ -27,6 +28,16 @@ public class saveFile {
         return Files.exists(path);
     }
     
+    public String fileName() {
+        Scanner scan = new Scanner(System.in);
+        
+        System.out.format("Please choose a place to save the file.%n" + 
+                "Normal directory is D:\\testfolder\\CHOOSE FILE NAME HERE for now.%n");
+        
+        String directory = scan.next();
+        return directory;
+        
+    }
     /* TODO
     ADD CHOOSE FILE NAME FUNCTIONALITY
     ADD INPUT FEATURES
