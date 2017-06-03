@@ -15,8 +15,17 @@ import java.util.Scanner;
 public class saveFile {
     public boolean makeFile(String desiredPath) {
         
+        //creates path variable for use in creating file or directories
         Path path = Paths.get(desiredPath);
         
+        //create parent directories of path
+        try {
+            Files.createDirectories(path.getParent());
+        } catch (IOException x) {
+            System.err.format("CreateDirectory error: %s%n", x);
+        }
+        
+        //create file 
         try {
             Files.createFile(path);
         } catch (FileAlreadyExistsException x) {
