@@ -40,10 +40,9 @@ public class saveFile {
     public String fileName() {
         Scanner scan = new Scanner(System.in);
         
-        System.out.format("Please choose a place to save the file.%n" + 
-                "Normal directory is D:\\testfolder\\CHOOSE FILE NAME HERE for now.%n");
+        System.out.format("Please choose a filename.%n" + "D:\\javaproject\\");
         
-        String directory = scan.next();
+        String directory = "D:\\javaproject\\" + scan.next() + ".txt";
         return directory;
         
     }
