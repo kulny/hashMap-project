@@ -46,10 +46,11 @@ public class saveFile {
         return directory;
         
     }
-    /* TODO
-    REMOVE .TXT SO USER CAN INPUT NAMEX.TXT AND IT DOESNT HAVE .TXT.TXT
-    ADD INPUT FEATURES
-    THEN ADD READING
-    THEN ADD RETRIEVAL FEATURES
-    */
+    public String pathVar(String desiredPath) {
+        
+        String path = fileName();
+        
+        return path;
+        
+    }
 }
