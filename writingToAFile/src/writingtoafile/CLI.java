@@ -11,6 +11,7 @@ import java.util.Scanner;
  * @author Cody
  */
 public class CLI {
+    
     public void CLIChoices() {
         // 1 make file
         // 2 read file
@@ -34,7 +35,8 @@ public class CLI {
                 
             } else switch (input) {
                 case "1":
-                    save.makeFile(save.fileName());
+                    save.fileName();
+                    save.makeFile();
                     break;
             // ------------------------ ADD READ FILE FUNCTIONALITY -----------------------
                 case "2":

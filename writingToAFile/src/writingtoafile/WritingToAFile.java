@@ -18,7 +18,9 @@ public class WritingToAFile {
         
         saveFile save = new saveFile();
         
-        Boolean madeFile = save.makeFile(save.fileName());
+        save.fileName();
+        save.makeFile();
+        
         
         
         

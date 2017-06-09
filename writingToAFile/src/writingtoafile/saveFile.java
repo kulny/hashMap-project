@@ -13,10 +13,15 @@ import java.util.Scanner;
  * @author Cody
  */
 public class saveFile {
-    public boolean makeFile(String desiredPath) {
+    
+    String intendedPath;
+    
+    
+    //makes the file based on what the file name should be
+    public boolean makeFile() {
         
         //creates path variable for use in creating file or directories
-        Path path = Paths.get(desiredPath);
+        Path path = Paths.get(intendedPath);
         
         //create parent directories of path
         try {
@@ -36,21 +41,25 @@ public class saveFile {
         
         return Files.exists(path);
     }
+    // asks for user input on file name then uses accessor method setPath() to prep it for anything
+    //else that might use it
     
-    public String fileName() {
+    public boolean fileName() {
         Scanner scan = new Scanner(System.in);
         
         System.out.format("Please choose a filename.%n" + "D:\\javaproject\\");
         
-        String directory = "D:\\javaproject\\" + scan.next() + ".txt";
-        return directory;
+        setPath("D:\\javaproject\\" + scan.next() + ".txt");
+        return true;
         
     }
-    public String pathVar(String desiredPath) {
+    //accessor method to make it easy to overwrite used path variable
+    public void setPath(String desiredPath) {
+        intendedPath = desiredPath;
         
-        String path = fileName();
-        
-        return path;
-        
+    }
+    
+    public String pathProvide() {
+        return intendedPath;
     }
 }
