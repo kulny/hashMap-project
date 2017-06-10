@@ -7,3 +7,4 @@ THEN ADD RETRIEVAL FEATURES
 add command line interface system using keywords to open specific instruction sets
 namely, create save file, write to file, etc
 
+figure out how to pass methods as a parameter using lambdas or interfaces or something

@@ -6,6 +6,10 @@
 package writingtoafile;
 import java.nio.file.*;
 import java.io.IOException;
+import java.util.Scanner;
+import java.io.BufferedWriter;
+import java.nio.charset.Charset;
+
 
 
 /**
@@ -13,15 +17,24 @@ import java.io.IOException;
  * @author Cody
  */
 public class writeToFile {
-    public boolean write() {
+    public void write() {
+       saveFile save = new saveFile();
+       String writeTarget = save.pathProvide();
+       Path path = Paths.get(writeTarget);  // figure out lambdas or interfaces or something to pass the method as a parameter
        
-        saveFile save = new saveFile();
+       Scanner scan = new Scanner(System.in);
+       
+       Charset charset = Charset.defaultCharset();
+       
+       System.out.println("What would you like to write?");
+       
+       String toFile = scan.next();
         
-        Path path = Paths.get(save.pathProvide());
-        
-        
-        try {
-            
-        
+       try (BufferedWriter writer = Files.newBufferedWriter(path, charset)) {
+           writer.write(toFile);
+       } catch (IOException x) {
+           System.err.format("IOException: %s%n", x);
+       }
+                   
     }
 }

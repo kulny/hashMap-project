@@ -17,10 +17,14 @@ public class WritingToAFile {
     public static void main(String[] args) {
         
         saveFile save = new saveFile();
+        writeToFile write = new writeToFile();
         
         save.fileName();
         save.makeFile();
         
+        System.out.println(save.pathProvide());
+        
+        write.write();
         
         
         
