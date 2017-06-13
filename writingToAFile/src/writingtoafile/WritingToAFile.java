@@ -16,7 +16,7 @@ public class WritingToAFile {
 
     public static void main(String[] args) {
         
-        saveFile save = new saveFile();
+        SaveAndEdit save = new SaveAndEdit();
         writeToFile write = new writeToFile();
         
         save.fileName();
@@ -24,7 +24,8 @@ public class WritingToAFile {
         
         System.out.println(save.pathProvide());
         
-        write.write();
+        save.write();
+        //write.write();
         
         
         

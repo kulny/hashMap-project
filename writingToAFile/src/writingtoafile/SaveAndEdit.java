@@ -4,15 +4,17 @@
  * and open the template in the editor.
  */
 package writingtoafile;
+import java.io.BufferedWriter;
 import java.nio.file.*;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.Scanner;
 
 /**
  *
  * @author Cody
  */
-public class saveFile {
+public class SaveAndEdit {
     
     String intendedPath;
     
@@ -59,7 +61,24 @@ public class saveFile {
         
     }
     
-    public String pathProvide() {
-        return intendedPath;
+    public void write() {
+
+       
+       Path path = Paths.get(intendedPath);
+       
+       Scanner scan = new Scanner(System.in);
+       
+       Charset charset = Charset.defaultCharset();
+       
+       System.out.println("What would you like to write?");
+       
+       String toFile = scan.next();
+       
+       try (BufferedWriter writer = Files.newBufferedWriter(path, charset)) {
+           writer.write(toFile);
+       } catch (IOException x) {
+           System.err.format("IOException: %s%n", x);
+       }
+                 
     }
 }

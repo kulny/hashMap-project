@@ -23,7 +23,7 @@ public class CLI {
                 "   3: Write File%n");
         
         Scanner scan = new Scanner(System.in);
-        saveFile save = new saveFile();
+        SaveAndEdit save = new SaveAndEdit();
         
         
         String input = scan.next();
