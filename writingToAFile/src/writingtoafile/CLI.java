@@ -38,7 +38,6 @@ public class CLI {
                 fem.nFileName();
                 fem.read();
                 break;
-        // ------------------------ ADD WRITE TO FILE FUNCTIONALITY -------------------
             case "3":
                 fem.nFileName();
                 fem.write();
