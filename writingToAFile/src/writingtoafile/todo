@@ -9,3 +9,5 @@ jump from creating a file directly to writing to it "Would you like to write to 
 EXTEND INPUT FEATURES  how?????
 
 someday extend to phone and allow remote notes that automatically sync with files on computer
+
+add commands to write() such that /n or /y or etc can jump to future commands or you can simply continue to write with a new line
