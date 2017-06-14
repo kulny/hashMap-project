@@ -4,9 +4,6 @@
  * and open the template in the editor.
  */
 package writingtoafile;
-import java.nio.file.*;
-import java.util.Scanner;
-import java.io.IOException;
 
 /**
  *
@@ -16,12 +13,9 @@ public class WritingToAFile {
 
     public static void main(String[] args) {
         
-        SaveAndEdit save = new SaveAndEdit();
+        CLI cli = new CLI();
         
-        save.fileName();
-        save.makeFile();
-        save.write();
-        
+        cli.CLIChoices();
         
         
     }
