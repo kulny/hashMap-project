@@ -1,10 +1,9 @@
-add .txt removal functionality so user can input nameX.txt instead of only name
+extend CLI with multiple commands from a single input e.g. nn or n/n etc to double negative and immediately exit the program, or y3 to jump from creating
+or reading directly into writing.
 
-ADD INPUT FEATURES  ------------------
-THEN ADD READING
-THEN ADD RETRIEVAL FEATURES
+reader/search function someday
 
-add command line interface system using keywords to open specific instruction sets
-namely, create save file, write to file, etc
+jump from creating a file directly to writing to it "Would you like to write to this new file?" etc
 
-EXTEND INPUT FEATURES
+
+EXTEND INPUT FEATURES  how?????
