@@ -23,31 +23,37 @@ public class CLI {
                 "   3: Write File%n");
         
         Scanner scan = new Scanner(System.in);
-        SaveAndEdit save = new SaveAndEdit();
+        FileEditMethods fem = new FileEditMethods();
         
         
         String input = scan.next();
         
         
-        while(true) {
-            if (null == input) {
+        switch (input) {
+            case "1":
+                fem.nFileName();
+                fem.makeFile();
+                break;
+            case "2":
+                fem.nFileName();
+                fem.read();
+                break;
+        // ------------------------ ADD WRITE TO FILE FUNCTIONALITY -------------------
+            case "3":
+                fem.nFileName();
+                fem.write();
+                break;
+            default:
                 System.out.println("That is not a valid command.");
-                
-            } else switch (input) {
-                case "1":
-                    save.fileName();
-                    save.makeFile();
-                    break;
-            // ------------------------ ADD READ FILE FUNCTIONALITY -----------------------
-                case "2":
-                    break;
-            // ------------------------ ADD WRITE TO FILE FUNCTIONALITY -------------------
-                case "3":
-                    break;
-                default:
-                    System.out.println("That is not a valid command.");
-                    break;
-            }
+                break;
+        }
+        System.out.println("Would you like to use another command? Y/N");
+        
+        // recursive call of the CLI for loop
+        String response = scan.next();
+        
+        if (response.equalsIgnoreCase("Y") || (response.equalsIgnoreCase("yes"))) {
+            CLIChoices();
         }
     }
 }
