@@ -21,9 +21,10 @@ public class CLI {
         // 3 write to file
         
         System.out.format("Please choose an operation:%n" + 
-                "   1: Make File%n" + 
-                "   2: Read File%n" + 
-                "   3: Write File%n");
+                "   1: Make File --- creates an empty file%n" + 
+                "   2: Read File %n" + 
+                "   3: Write File --- writes to a file, and creates it if it does not exist yet%n" +
+                "   4: Delete File%n");
         
         String input = scan.next();
         
@@ -40,6 +41,11 @@ public class CLI {
             case "3":
                 fem.nFileName();
                 writeThis();
+                break;
+            case "4":
+                fem.nFileName();
+                fem.delete();
+                
                 break;
             default:
                 System.out.println("That is not a valid command.");
@@ -64,6 +70,7 @@ public class CLI {
         
         writeMore();
     }
+    
     public void writeMore() {  // continues writing if user wants, also allows continued input without
         System.out.println("Would you like to write more? Y/N"); // ignoring further command prompts
         String response = scan.next();
