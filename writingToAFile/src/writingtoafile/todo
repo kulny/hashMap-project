@@ -8,3 +8,18 @@ EXTEND INPUT FEATURES  how?????
 someday extend to phone and allow remote notes that automatically sync with files on computer
 
 add commands to write() such that /n or /y or etc can jump to future commands or you can simply continue to write with a new line
+
+
+figure out persistent variables such as directory for deployment of app 
+namely, so it can have a default save space that doesn't have to be set from
+the source code
+
+^ .ini file? etc
+
+begin to implement this as part of a larger project namely the --
+---
+conWorld Builder
+--- or
+Notes taker
+--- or
+p saver
