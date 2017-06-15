@@ -121,4 +121,33 @@ public class FileEditMethods {
             System.out.println("File does not exist.");
         }
     }
+    
+    public void delete() {
+        
+        Path path = Paths.get(intendedPath);
+        File file = new File(intendedPath);
+        
+        if (!file.exists()) {
+            System.out.println("File does not exist, and cannot be deleted.");
+            return;
+        }
+        
+        
+        try {
+            Files.delete(path);
+        } catch (NoSuchFileException x) {
+            System.err.format("%s: no such" + " file or directory%n", path);
+        } catch (DirectoryNotEmptyException x) {
+            System.err.format("%s not empty%n", path);
+        } catch (IOException x) {
+            // catches file permission issues
+            System.err.println(x);
+        }
+        
+        if (!file.exists()) {
+            System.out.println("File deleted successfully.");
+        } else {
+            System.out.println("File could not be deleted.");
+        }
+    }
 }
