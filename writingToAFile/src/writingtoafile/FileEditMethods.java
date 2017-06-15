@@ -65,7 +65,7 @@ public class FileEditMethods {
         
         System.out.format("Please choose a filename.%n" + "D:\\javaproject\\");
         
-        String fileName = scan.next();
+        String fileName = scan.nextLine();
         
         if (fileName.endsWith(".txt") == false) {
             setPath("D:\\javaproject\\" + fileName + ".txt");
@@ -79,17 +79,12 @@ public class FileEditMethods {
         
     }
     
-    //writes to file
-    public void write() {
+    //writes to file given String parameter
+    public void write(String toFile) {
        Path path = Paths.get(intendedPath);
        
        File file = new File(intendedPath);
-       Scanner scan = new Scanner(System.in);
 
-       System.out.println("What would you like to write?");
-           
-       String toFile = scan.nextLine();
-       
        if (file.length() == 0) {
 
            try (BufferedWriter writer = Files.newBufferedWriter(path, CHARSET)) {
@@ -107,15 +102,8 @@ public class FileEditMethods {
                System.err.format("IOException: %s%n", x);
            }
        }
-       
-       System.out.println("Would you like to write more? Y/N");
-       String response = scan.next();
-       if (response.equalsIgnoreCase("y") || (response.equalsIgnoreCase("yes"))) {
-           write();
-       }
-       
     }
-    //reads to file
+    //reads from file
     public void read() {
         Path path = Paths.get(intendedPath);
         
