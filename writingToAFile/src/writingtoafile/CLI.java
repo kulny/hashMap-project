@@ -12,6 +12,9 @@ import java.util.Scanner;
  */
 public class CLI {
     
+    FileEditMethods fem = new FileEditMethods();
+    Scanner scan = new Scanner(System.in);
+    
     public void CLIChoices() {
         // 1 make file
         // 2 read file
@@ -21,10 +24,6 @@ public class CLI {
                 "   1: Make File%n" + 
                 "   2: Read File%n" + 
                 "   3: Write File%n");
-        
-        Scanner scan = new Scanner(System.in);
-        FileEditMethods fem = new FileEditMethods();
-        
         
         String input = scan.next();
         
@@ -40,7 +39,7 @@ public class CLI {
                 break;
             case "3":
                 fem.nFileName();
-                fem.write();
+                writeThis();
                 break;
             default:
                 System.out.println("That is not a valid command.");
@@ -53,6 +52,29 @@ public class CLI {
         
         if (response.equalsIgnoreCase("Y") || (response.equalsIgnoreCase("yes"))) {
             CLIChoices();
+        }
+    }
+    public void writeThis() {
+        
+        System.out.println("What would you like to write?");
+        scan.nextLine(); // clears a hanging line separator or whatever caused by previous calls
+        String toFile = scan.nextLine(); // of scan.next();
+        
+        fem.write(toFile);
+        
+        writeMore();
+    }
+    public void writeMore() {  // continues writing if user wants, also allows continued input without
+        System.out.println("Would you like to write more? Y/N"); // ignoring further command prompts
+        String response = scan.next();
+        
+        if (response.equalsIgnoreCase("y") || (response.equalsIgnoreCase("yes"))) {
+           writeThis();
+        } else if (response.equalsIgnoreCase("n") || (response.equalsIgnoreCase("no"))) {
+            return;
+        } else {
+           fem.write(response);
+           writeMore();
         }
     }
 }
