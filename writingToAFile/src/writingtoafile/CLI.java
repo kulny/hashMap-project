@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package writingtoafile;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 /**
@@ -16,15 +18,13 @@ public class CLI {
     Scanner scan = new Scanner(System.in);
     
     public void CLIChoices() {
-        // 1 make file
-        // 2 read file
-        // 3 write to file
-        
+
         System.out.format("Please choose an operation:%n" + 
                 "   1: Make File --- creates an empty file%n" + 
                 "   2: Read File %n" + 
                 "   3: Write File --- writes to a file, and creates it if it does not exist yet%n" +
-                "   4: Delete File%n");
+                "   4: Delete File%n" +
+                "   5: More Options%n");
         
         String input = scan.next();
         
@@ -46,6 +46,26 @@ public class CLI {
                 fem.nFileName();
                 fem.delete();
                 break;
+            case "5":
+                System.out.format("Please choose an operation:%n" + 
+                "   1: Change Directory %n");
+                
+                input = scan.next();
+                
+                switch (input) {
+                    case "1":
+                        System.out.println("Where would you like the file to be saved?");
+                        fem.changeDir();
+                        break;
+                        
+                    // ADD MORE CASES AS NECESSARY FOR ADDITIONAL SUB-FEATURES HERE ---------
+                    default:
+                        System.out.println("That is not a valid command.");
+                        break;
+                }
+                
+                break;
+                
             default:
                 System.out.println("That is not a valid command.");
                 break;
@@ -83,4 +103,5 @@ public class CLI {
            writeMore();
         }
     }
+    
 }
