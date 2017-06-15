@@ -45,7 +45,6 @@ public class CLI {
             case "4":
                 fem.nFileName();
                 fem.delete();
-                
                 break;
             default:
                 System.out.println("That is not a valid command.");
