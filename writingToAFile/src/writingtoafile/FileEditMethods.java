@@ -21,9 +21,10 @@ public class FileEditMethods {
     //nFileName(); USES ACCESSOR METHOD setPath(String intendedPath); TO SET private String intendedPath; ACCORDING TO USER INPUT OF FILENAME
     //ONCE THIS IS SET, METHODS CREATE, WRITE, OR READ CAN BE IMMEDIATELY CALLED
     
-    
+    Scanner scan = new Scanner (System.in);
     
     private String intendedPath;
+    private String intendedDirectory = "D:\\javaproject\\"; //pretty sure there's a way to do this without needing to set a directory. some call parents method acted on the final path or something
     private static final Charset CHARSET = Charset.defaultCharset();
     
     // makes the file based on what the file name should be
@@ -61,24 +62,24 @@ public class FileEditMethods {
     // else that might use it 
     //v2
     public void nFileName() {
-        Scanner scan = new Scanner (System.in);
         
-        System.out.format("Please choose a filename.%n" + "D:\\javaproject\\");
         
+        System.out.format("Please choose a filename.%n");
         String fileName = scan.nextLine();
         
         if (fileName.endsWith(".txt") == false) {
-            setPath("D:\\javaproject\\" + fileName + ".txt");
+            setPath(intendedDirectory + fileName + ".txt");
         } else {
-            setPath("D:\\javaproject\\" + fileName);
+            setPath(intendedDirectory + fileName);
         }
     }
     //accessor method to make it easy to overwrite used path variable
     public void setPath(String desiredPath) {
         intendedPath = desiredPath;
-        
     }
-    
+    public void setDirectory(String desiredDir) {
+        intendedDirectory = desiredDir;
+    }
     //writes to file given String parameter
     public void write(String toFile) {
        Path path = Paths.get(intendedPath);
@@ -149,5 +150,23 @@ public class FileEditMethods {
         } else {
             System.out.println("File could not be deleted.");
         }
+    }
+    
+    public void changeDir() {
+
+
+    // use File.separator
+    String newDir = scan.next();
+
+    File file = new File(newDir);
+    if (file.isDirectory()) {
+        setDirectory(newDir);
+        scan.nextLine(); // clears hanging line end or w.e
+    } else {
+        System.out.format("That is not a valid directory.%n"
+        + "Please choose a valid directory.%n");
+        changeDir();
+    }
+    
     }
 }
