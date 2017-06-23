@@ -20,7 +20,7 @@ public class readProperties {
     public void loadProperties() {
 
         
-        try (FileInputStream in = new FileInputStream("props")) {
+        try (FileInputStream in = new FileInputStream("defaultWriteToFile.properties")) {
             defProps.load(in);
         } catch (IOException x) {
             System.err.format("IOException: %s%n", x);
@@ -28,7 +28,7 @@ public class readProperties {
         
 
         
-        try (FileInputStream in = new FileInputStream("appProps")) {
+        try (FileInputStream in = new FileInputStream("writeToFile.properties")) {
             appProps.load(in);
         } catch (IOException x) {
             System.err.format("IOException: %s%n", x);
@@ -38,15 +38,16 @@ public class readProperties {
     }
     
     public void saveProperties() {
-        try (FileOutputStream newProperties = new FileOutputStream("appProperties")) {
+        try (FileOutputStream newProperties = new FileOutputStream("writeToFile.properties")) {
             appProps.store(newProperties, "--no comment--");
         } catch (IOException x) {
             System.err.format("IOException: %s%n", x);
         }
     }
     
-    public void getProperties(String property) { //used only for default path for now
-        appProps.getProperty(property);
+    public String getProperties(String property) { //used only for to save default path for now
+        System.out.println(appProps.get(property));
+        return appProps.getProperty(property);
     }
     public void setProperties(String property, String value) {
         appProps.setProperty(property, value);

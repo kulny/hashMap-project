@@ -25,3 +25,9 @@ Notes taker
 p saver
 
 create gui interface to change the directory in some ini file or something
+
+add way to see what files are in the selected directory
+
+solve issues with readProperties.getProperties("usrSetDir") returning null and creating a nullpointerexception
+try to find a way to initialize the intendedDir string from the properties file at the calling of the CLI method?
+

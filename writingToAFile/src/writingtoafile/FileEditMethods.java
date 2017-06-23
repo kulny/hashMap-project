@@ -22,18 +22,23 @@ public class FileEditMethods {
     //ONCE THIS IS SET, METHODS CREATE, WRITE, OR READ CAN BE IMMEDIATELY CALLED
     
     Scanner scan = new Scanner (System.in);
+    readProperties readProperties = new readProperties();
+    
+    
     
     private String intendedPath;
-    private String intendedDirectory = "D:\\javaproject\\"; //pretty sure there's a way to do this without needing to set a directory. some call parents method acted on the final path or something
+    private String intendedDirectory; //pretty sure there's a way to do this without needing to set a directory. some call parents method acted on the final path or something
+
+
     private static final Charset CHARSET = Charset.defaultCharset();
     
     // makes the file based on what the file name should be
-    public boolean makeFile() {
+    public void makeFile() {
         
         //creates path variable for use in creating file or directories
         Path path = Paths.get(intendedPath);
         
-        
+        System.out.println(path);
         // lets user know if file is created
         if (!Files.exists(path)) {
             System.out.println("Creating the file...");
@@ -49,13 +54,14 @@ public class FileEditMethods {
         //create file 
         try {
             Files.createFile(path);
-        //} catch (FileAlreadyExistsException x) {
-            //System.err.format("File named %s" + " already exists%n", path);
         } catch (IOException x) {
             System.err.format("createFile error: %s%n", x);
         }
         
-        return Files.exists(path);
+        if (Files.exists(path)) {
+            System.out.println("File created successfully.");
+        }
+
     }
     
     // asks for user input on file name then uses accessor method setPath() to prep it for anything
@@ -77,8 +83,8 @@ public class FileEditMethods {
     public void setPath(String desiredPath) {
         intendedPath = desiredPath;
     }
-    public void setDirectory(String desiredDir) {
-        intendedDirectory = desiredDir;
+    public void setDirFromProperties() {
+        intendedDirectory = readProperties.getProperties("usrSetDir");
     }
     //writes to file given String parameter
     public void write(String toFile) {
@@ -152,21 +158,24 @@ public class FileEditMethods {
         }
     }
     
-    public void changeDir() {
+    public void changeDir() {   
 
+        // use File.separator
+        String newDir = scan.next();
+    
 
-    // use File.separator
-    String newDir = scan.next();
-
-    File file = new File(newDir);
-    if (file.isDirectory()) {
-        setDirectory(newDir);
-        scan.nextLine(); // clears hanging line end or w.e
-    } else {
-        System.out.format("That is not a valid directory.%n"
-        + "Please choose a valid directory.%n");
-        changeDir();
-    }
+        File file = new File(newDir);
+        if (file.isDirectory()) {
+            //setDirectory(newDir);  //obsolete after adding properties functionality to changing directory
+            readProperties.loadProperties();
+            readProperties.setProperties("usrSetDir", newDir);
+            readProperties.saveProperties();
+            scan.nextLine(); // clears hanging line end or w.e
+        } else {
+            System.out.format("That is not a valid directory.%n"
+            + "Please choose a valid directory.%n");
+            changeDir(); // does this create new objects of File(newDir) each time it's called?
+        }
     
     }
 }

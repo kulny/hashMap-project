@@ -16,8 +16,10 @@ public class CLI {
     
     FileEditMethods fem = new FileEditMethods();
     Scanner scan = new Scanner(System.in);
+    readProperties rp = new readProperties();
     
     public void CLIChoices() {
+
 
         System.out.format("Please choose an operation:%n" + 
                 "   1: Make File --- creates an empty file%n" + 
@@ -71,7 +73,6 @@ public class CLI {
                 break;
         }
         System.out.println("Would you like to use another command? Y/N");
-        
         // recursive call of the CLI for loop
         String response = scan.next();
         
