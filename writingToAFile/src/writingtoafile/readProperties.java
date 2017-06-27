@@ -46,7 +46,6 @@ public class readProperties {
     }
     
     public String getProperties(String property) { //used only for to save default path for now
-        System.out.println(appProps.get(property));
         return appProps.getProperty(property);
     }
     public void setProperties(String property, String value) {
