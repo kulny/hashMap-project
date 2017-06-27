@@ -10,12 +10,6 @@ someday extend to phone and allow remote notes that automatically sync with file
 add commands to write() such that /n or /y or etc can jump to future commands or you can simply continue to write with a new line
 
 
-figure out persistent variables such as directory for deployment of app 
-namely, so it can have a default save space that doesn't have to be set from
-the source code
-
-^ .ini file? etc
-
 begin to implement this as part of a larger project namely the --
 ---
 conWorld Builder
@@ -24,10 +18,9 @@ Notes taker
 --- or
 p saver
 
-create gui interface to change the directory in some ini file or something
-
 add way to see what files are in the selected directory
 
 solve issues with readProperties.getProperties("usrSetDir") returning null and creating a nullpointerexception
 try to find a way to initialize the intendedDir string from the properties file at the calling of the CLI method?
 
+further testing on properties
