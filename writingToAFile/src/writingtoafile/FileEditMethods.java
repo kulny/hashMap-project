@@ -22,7 +22,7 @@ public class FileEditMethods {
     //ONCE THIS IS SET, METHODS CREATE, WRITE, OR READ CAN BE IMMEDIATELY CALLED
     
     Scanner scan = new Scanner (System.in);
-    readProperties readProperties = new readProperties();
+    readProperties rp = new readProperties();
     
     
     
@@ -67,16 +67,17 @@ public class FileEditMethods {
     // asks for user input on file name then uses accessor method setPath() to prep it for anything
     // else that might use it 
     //v2
-    public void nFileName() {
-        
+    public void FileName() {  // maybe one day convert the filename > setpath > vars > 
+                            // getpath into call method > get path(dir, name, etc) pass to next method
+        initProps();
         
         System.out.format("Please choose a filename.%n");
         String fileName = scan.nextLine();
         
         if (fileName.endsWith(".txt") == false) {
-            setPath(intendedDirectory + fileName + ".txt");
+            setPath(intendedDirectory + File.separator + fileName + ".txt");
         } else {
-            setPath(intendedDirectory + fileName);
+            setPath(intendedDirectory + File.separator + fileName);
         }
     }
     //accessor method to make it easy to overwrite used path variable
@@ -84,7 +85,7 @@ public class FileEditMethods {
         intendedPath = desiredPath;
     }
     public void setDirFromProperties() {
-        intendedDirectory = readProperties.getProperties("usrSetDir");
+        intendedDirectory = rp.getProperties("usrSetDir");
     }
     //writes to file given String parameter
     public void write(String toFile) {
@@ -167,9 +168,9 @@ public class FileEditMethods {
         File file = new File(newDir);
         if (file.isDirectory()) {
             //setDirectory(newDir);  //obsolete after adding properties functionality to changing directory
-            readProperties.loadProperties();
-            readProperties.setProperties("usrSetDir", newDir);
-            readProperties.saveProperties();
+            rp.loadProperties();
+            rp.setProperties("usrSetDir", newDir);
+            rp.saveProperties();
             scan.nextLine(); // clears hanging line end or w.e
         } else {
             System.out.format("That is not a valid directory.%n"
@@ -177,5 +178,14 @@ public class FileEditMethods {
             changeDir(); // does this create new objects of File(newDir) each time it's called?
         }
     
+    }
+    public void initProps() {
+        
+        rp.loadProperties();
+        String t = rp.getProperties("usrSetDir");
+        System.out.println(t);
+        setDirFromProperties();
+        System.out.println(intendedDirectory);
+        
     }
 }
