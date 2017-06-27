@@ -16,7 +16,6 @@ public class CLI {
     
     FileEditMethods fem = new FileEditMethods();
     Scanner scan = new Scanner(System.in);
-    readProperties rp = new readProperties();
     
     public void CLIChoices() {
 
@@ -33,19 +32,19 @@ public class CLI {
         
         switch (input) {
             case "1":
-                fem.nFileName();
+                fem.FileName();
                 fem.makeFile();
                 break;
             case "2":
-                fem.nFileName();
+                fem.FileName();
                 fem.read();
                 break;
             case "3":
-                fem.nFileName();
+                fem.FileName();
                 writeThis();
                 break;
             case "4":
-                fem.nFileName();
+                fem.FileName();
                 fem.delete();
                 break;
             case "5":
