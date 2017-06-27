@@ -13,11 +13,14 @@ public class WritingToAFile {
 
     public static void main(String[] args) {
         
+        readProperties rp = new readProperties();
         CLI cli = new CLI();
+        FileEditMethods fem = new FileEditMethods();
+        
+        rp.loadProperties();
         
         cli.CLIChoices();
-        
-        
+
     }
    
 }
