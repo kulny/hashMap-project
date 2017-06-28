@@ -20,7 +20,7 @@ p saver
 
 add way to see what files are in the selected directory
 
-solve issues with readProperties.getProperties("usrSetDir") returning null and creating a nullpointerexception
-try to find a way to initialize the intendedDir string from the properties file at the calling of the CLI method?
+create directory if directory does not exist
+remove the directory bugtest print
 
-further testing on properties
+add functionality to delete directories
