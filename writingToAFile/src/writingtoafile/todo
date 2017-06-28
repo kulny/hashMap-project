@@ -20,7 +20,4 @@ p saver
 
 add way to see what files are in the selected directory
 
-create directory if directory does not exist
-remove the directory bugtest print
-
 add functionality to delete directories
