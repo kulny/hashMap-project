@@ -38,7 +38,6 @@ public class FileEditMethods {
         //creates path variable for use in creating file or directories
         Path path = Paths.get(intendedPath);
         
-        System.out.println(path);
         // lets user know if file is created
         if (!Files.exists(path)) {
             System.out.println("Creating the file...");
@@ -167,25 +166,61 @@ public class FileEditMethods {
 
         File file = new File(newDir);
         if (file.isDirectory()) {
-            //setDirectory(newDir);  //obsolete after adding properties functionality to changing directory
             rp.loadProperties();
             rp.setProperties("usrSetDir", newDir);
             rp.saveProperties();
             scan.nextLine(); // clears hanging line end or w.e
+        } else if (testViablePath(newDir)) {
+            
+            scan.nextLine(); //clears hanging line end
+            
+            
+            
+            System.out.println("That directory was not found. Would you like to create it?");
+            
+            String response = scan.next();
+            
+            if (response.equalsIgnoreCase("y") || (response.equalsIgnoreCase("yes"))) {
+                try {
+                    Files.createDirectories(Paths.get(newDir));
+                } catch (IOException x) {
+                    System.err.format("Create Directory Error: %s%n", x);
+                }
+                rp.loadProperties();
+                rp.setProperties("usrSetDir", newDir);
+                rp.saveProperties();
+                scan.nextLine(); // clears hanging line end
+            } else if (response.equalsIgnoreCase("n") || (response.equalsIgnoreCase("no"))) {
+                System.out.println("Please choose a valid directory.");
+                scan.nextLine();
+                changeDir();// does this create new objects of File(newDir) each time it's called?
+            } else { // incase of random answers
+                System.out.println("I'll take that as a no.");
+                System.out.println("Please choose a valid directory.");
+                scan.nextLine();
+                changeDir();
+            }
+            
         } else {
-            System.out.format("That is not a valid directory.%n"
-            + "Please choose a valid directory.%n");
-            changeDir(); // does this create new objects of File(newDir) each time it's called?
+            System.out.format("That is not a valid directory.%n" + 
+                    "Please choose a valid directory.%n");
+            changeDir();
         }
     
     }
     public void initProps() {
         
         rp.loadProperties();
-        String t = rp.getProperties("usrSetDir");
-        System.out.println(t);
         setDirFromProperties();
-        System.out.println(intendedDirectory);
         
+    }
+    
+    public boolean testViablePath(String pathToTest) {
+        try {
+            Paths.get(pathToTest);
+        } catch (InvalidPathException | NullPointerException ex) {
+            return false;
+        }
+        return true;
     }
 }
